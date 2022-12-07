@@ -1,0 +1,32 @@
+﻿@using BAM.Entities.Concrete
+@using BAM.UI.Models
+@model HomeViewModel
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Random rnd = new Random();
+    List<int> ids = new List<int>();
+    int value = 0;
+}
+<div class="container">
+    <div class="row">
+        <div class="mt-5">
+            <div class="row row-cols-md-3 px-5">
+                @while (value < 3)
+                {
+                    Book book = Model.Books.FirstOrDefault(x => x.Id == rnd.Next(1, Model.Books.Count() + 1));
+                    if (book != null && ids.Contains(book.Id) == false)
+                    {
+                        ids.Add(book.Id);
+                        <a asp-action="Details" asp-controller="Home" asp-route-id="@book.Id">
+                            <div class="card" style="width: 18rem;">
+                                <img src="@book.Image" alt="...">
+                            </div>
+                        </a>
+                        value++;
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

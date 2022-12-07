@@ -1,0 +1,32 @@
+﻿@using BAM.Entities.Concrete
+@model List<Category>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <a asp-action="Add" class="btn btn-success">Add New Category</a>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="col-md-1">#</th>
+                    <th class="col-md-10">Name</th>
+                    <th class="col-md-1"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="col-md-1">@item.Id</td>
+                        <td class="col-md-10">@item.Name</td>
+                        <td class="col-md-1">
+                            <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id">EDİT</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

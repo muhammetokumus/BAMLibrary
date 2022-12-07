@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+    <title>BAM Library</title>
+</head>
+
+<body style="background-color: #EEEAEA;">
+    <div style="background-color:#9C0C13">
+        <nav class="navbar navbar-expand-lg container" >
+
+            <div class="container-fluid">
+
+                <a class="navbar-brand" style="color:white" href="/home/index">BAM Library</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a class="nav-link active" style="color:white" aria-current="page" asp-action="Index" asp-controller="Book">Book</a>
+                        <a class="nav-link active" style="color:white" aria-current="page" asp-action="GetRole" asp-controller="Admin">Role</a>
+                        <a class="nav-link active" style="color:white" aria-current="page" asp-action="Index" asp-controller="Category">Category</a>
+                        <div class="float-end">
+                            <button class="btn me-2" style="background-color:#171717; color:white;">@User.Identity.Name</button>
+                            <a class="btn" style="background-color:#171717; color:white;" asp-action="LogOut" asp-controller="Account">Log Out</a>
+
+                        </div>
+                    }
+                    else
+                    {
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" style="color:white" aria-current="page" href="/home/books">Books</a>
+                            </li>
+                        </ul>
+                        <form class="d-flex" asp-action="Index" asp-controller="Home" role="search" method="post">
+                            <input name="description" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn me-2" style="background-color:#171717; color:white;" type="submit">Search</button>
+                        </form>
+                        <div class="float-end">
+                            <button class="btn me-2" style="background-color:#171717; color:white;">@User.Identity.Name</button>
+                            <a class="btn" style="background-color:#171717; color:white;" asp-action="LogOut" asp-controller="Account">Log Out</a>
+                            <a asp-action="Index" asp-controller="Basket" class="btn" style="background-color:#171717;color:white"><i class="bi bi-cart3"></i></a>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" style="color:white" aria-current="page" href="/home/books">Books</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" asp-action="Index" asp-controller="Home" role="search" method="post">
+                        <input name="description" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn me-2" style="background-color:#171717; color:white;" type="submit">Search</button>
+                    </form>
+                    <a class="btn" style="background-color:#171717; color:white;" method="get" asp-action="Login" asp-controller="Account">Log in</a>
+                    <a class="btn ms-2" style="background-color:#171717; color:white;" method="get" asp-action="SignUp" asp-controller="Account">Sign Up</a>
+                }
+            </div>
+        </nav>
+    </div>
+    <main class="p-4">
+        @RenderBody()
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

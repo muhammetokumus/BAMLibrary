@@ -1,0 +1,44 @@
+﻿@using BAM.Entities.Concrete
+@model Book
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container border-2 border-dark rounded-2 p-3 bg-white  border">
+
+    <div class="row">
+        <div class="col-md-2">
+            <img src="@Model.Image" alt="" class="img-fluid rounded-3 w-100">
+            <div class="row float-end" style="color:#9C0C13">
+                <div>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <h1>@Model.Name</h1>
+            <span class="badge text-primary">In Stock</span>
+            <span class="badge text-secondary">#0342216</span>
+            <span class="badge text-secondary">@Model.Author</span>
+            <div class="mt-1">
+                <p class="lead">
+                    @Model.Description
+                </p>
+            </div>
+            <div class="float-end">
+                <a asp-action="Buy" asp-controller="Basket" asp-route-id="@Model.Id" class="btn btn-success">
+                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                    <span class="badge">Add To Basket</span>
+                </a>
+            </div>
+            <div class="mb-1 float-end">
+                <span class="badge text-danger fs-4 fw-bold rounded">₺@Model.Price</span>
+            </div>
+        </div>
+    </div>
+</div>
+

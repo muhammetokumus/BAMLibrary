@@ -1,0 +1,43 @@
+﻿@model BooksViewModel
+@{
+    ViewData["Title"] = "Books";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+        <div class="row">
+            <div class="col-md-2 fw-bold py-5">
+                <ul class="list-group list-group-flush">
+                    @foreach (var item in Model.Categories)
+                    {
+                        <form method="post" asp-action="Books" asp-controller="Home" asp-route-id="@item.Id">
+                            <ul class="list-group">
+                                <button class="list-group-item" style="background-color:#9C0C13;color:white">@item.Name</button>
+                                <hr>
+                            </ul>
+                        </form>
+                    }
+                </ul>
+            </div>
+
+            <div class="col-md-10 d-inline-block">
+                @if (ViewBag.CategoryName != null)
+                {
+                    <h2 class="text-center" style="color:#9C0C13">@ViewBag.CategoryName</h2>
+                }
+                else
+                {
+                    <div class="py-4"></div>
+                }
+                <div class="row row-cols-md-3 px-5">
+                    @foreach (var item in Model.Books)
+                    {
+                        <a class="mb-2" asp-action="Details" asp-controller="Home" asp-route-id="@item.Id">
+                            <div class="card" style="width: 18rem;">
+                                <img src="@item.Image" alt="...">
+                            </div>
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+</div>
