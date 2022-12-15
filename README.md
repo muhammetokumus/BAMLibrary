@@ -1,1 +1,6 @@
-# BAMLibrary
+![image](https://user-images.githubusercontent.com/102230673/207969926-3b25699e-b3c0-4988-b61d-20554fcc4c7d.png)
+![image](https://user-images.githubusercontent.com/102230673/207969985-a2ae5e05-0387-472a-9e33-b0b8bbf227be.png)
+![image](https://user-images.githubusercontent.com/102230673/207970084-f324d4ae-40b4-4b0d-b30e-401dd83785ab.png)
+![image](https://user-images.githubusercontent.com/102230673/207970230-27b6dcf5-a4dd-4490-851c-f846baa2991d.png)
+![image](https://user-images.githubusercontent.com/102230673/207970330-b2a22a55-617e-4394-ac43-c914c63c6b2d.png)
+![image](https://user-images.githubusercontent.com/102230673/207970390-c7203a49-b5f4-4ec0-9d64-0b3c6a88dc7f.png)
